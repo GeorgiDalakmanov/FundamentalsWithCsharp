@@ -1,39 +1,42 @@
-﻿using System;
+int letterCount = int.Parse(Console.ReadLine());
 
-class Program
+string smsText = "";
+for (int i = 0; i < letterCount; i++)
 {
-    static void Main()
+    string line = Console.ReadLine();
+
+    int clickCount = line.Length;
+    char digitChar = line[0];
+
+    switch (digitChar)
     {
-        Console.WriteLine("Enter the digits separated by spaces:");
-        string[] inputDigits = Console.ReadLine().Split();
-
-        string result = ConvertDigitsToText(inputDigits);
-
-        Console.WriteLine("Output: " + result);
-    }
-
-    static string ConvertDigitsToText(string[] inputDigits)
-    {
-        string result = "";
-
-        foreach (string digits in inputDigits)
-        {
-            int mainDigit = int.Parse(digits[0].ToString());
-            int digitLength = digits.Length;
-
-            int offset = (mainDigit - 2) * 3;
-
-            if (mainDigit == 8 || mainDigit == 9)
-            {
-                offset += 1;
-            }
-
-            int letterIndex = (offset + digitLength - 1) % 26;
-            char letter = (char)(letterIndex + 97);
-
-            result += letter;
-        }
-
-        return result;
+        case '0':
+            smsText += ' ';
+            break;
+        case '2':
+            smsText += (char)(96 + clickCount);
+            break;
+        case '3':
+            smsText += (char)(99 + clickCount);
+            break;
+        case '4':
+            smsText += (char)(102 + clickCount);
+            break;
+        case '5':
+            smsText += (char)(105 + clickCount);
+            break;
+        case '6':
+            smsText += (char)(108 + clickCount);
+            break;
+        case '7':
+            smsText += (char)(111 + clickCount);
+            break;
+        case '8':
+            smsText += (char)(115 + clickCount);
+            break;
+        case '9':
+            smsText += (char)(118 + clickCount);
+            break;
     }
 }
+Console.WriteLine(smsText);
